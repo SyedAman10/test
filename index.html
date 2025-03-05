@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry, My Love</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fde7f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        h1 {
+            color: #d8529b;
+            font-size: 2.2rem;
+            animation: fadeIn 2s ease;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .message {
+            background-color: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            animation: slideUp 1.5s ease;
+        }
+        
+        @media (max-width: 600px) {
+            .message {
+                padding: 20px 15px;
+                font-size: 1rem;
+            }
+        }
+        
+        .heart-container {
+            position: relative;
+            height: 150px;
+            width: 150px;
+            margin: 10px auto;
+        }
+        
+        @media (max-width: 600px) {
+            .heart-container {
+                height: 120px;
+                width: 120px;
+            }
+        }
+        
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: #ff4b7d;
+            transform-origin: center;
+            animation: heartBeat 1.5s infinite;
+        }
+        
+        @media (max-width: 600px) {
+            .heart {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 60px;
+            height: 60px;
+            background-color: #ff4b7d;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        @media (max-width: 600px) {
+            .heart:before,
+            .heart:after {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        .heart:before {
+            top: -30px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -30px;
+        }
+        
+        @media (max-width: 600px) {
+            .heart:before {
+                top: -25px;
+            }
+            
+            .heart:after {
+                left: -25px;
+            }
+        }
+        
+        h2 {
+            color: #d8529b;
+            font-size: 1.6rem;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+        
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .gif-container img {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: calc(33.33% - 15px);
+            max-width: 200px;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        @media (max-width: 600px) {
+            .gif-container {
+                gap: 10px;
+            }
+            
+            .gif-container img {
+                width: calc(50% - 10px);
+            }
+        }
+        
+        .gif-container img:hover {
+            transform: scale(1.05);
+        }
+        
+        button {
+            background-color: #d8529b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            background-color: #c13c85;
+            transform: translateY(-3px);
+        }
+        
+        @keyframes heartBeat {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            15% {
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+            30% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            45% {
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+            60% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s infinite ease-in-out;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        
+        .reason {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff8f8;
+            border-radius: 10px;
+            border-left: 5px solid #ff4b7d;
+            animation: fadeIn 1s ease;
+        }
+        
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        /* More GIFs section */
+        .more-gifs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .more-gifs img {
+            border-radius: 10px;
+            width: calc(33.33% - 10px);
+            max-width: 150px;
+            height: auto;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 600px) {
+            .more-gifs img {
+                width: calc(50% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I'm So Sorry I Didn't Call</h1>
+        
+        <div class="message">
+            <p>To my beautiful wife,</p>
+            <p>I'm truly sorry I didn't call you. There's no excuse for not taking a moment to connect with the most important person in my life.</p>
+            <p><strong>You are my everything</strong> - my best friend, my confidant, my partner, and the light of my life.I live my best moment of my life when i see you</p>
+            <p>I promise to do better, because you deserve nothing less than all of my attention and love.</p>
+            <p>Please forgive me. TIMMI ❤️</p>
+        </div>
+        
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        
+        <h2>All The Ways You're My Everything</h2>
+        
+        <div class="gif-container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnN6czZnMThubmw0c2RjY3RoaGs0YWU3MG84b3o1NmFoaDA4aXBsbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4pTdcifPZLpDjL1e/giphy.gif" alt="Love hearts" class="floating" />
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHV0ZnB1ZjI0YXRpcHJub2lsOWh5aGlkMGludmE0MjZtdDdoeWZoZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0xessqCY2W4RZz6E/giphy.gif" alt="I love you" class="floating" style="animation-delay: 0.5s" />
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXFwMWJieDUwbTI1bXhoYTNqdW41emdnZXJhazVhb2s0MHFod2YzMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LpDmM2wSR4l4Q/giphy.gif" alt="Cute couple" class="floating" style="animation-delay: 1s" />
+        </div>
+        
+        <button id="forgiveBtn">Will You Forgive Me?</button>
+        
+        <div id="reasons" class="reason">
+            <p>I love everything about you - your smile, your laugh, your kindness, and even the way you get mad at me when I mess up.</p>
+            <p>You make every day better just by being in it, and I'm the luckiest person in the world to have you as my wife.</p>
+            
+            <div class="more-gifs">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGFtdTF2bTVvbHRmaTRndTVhc3N2azhydWxsY25tMXRoZWhld3pleiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEhn4qxQu3R26c2Xu/giphy.gif" alt="Love you" />
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJ4em5rOXloeGxvemYzNzgwZXBmdGVnNXdwd2w1b3piMmY1c3cwZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4Ki4biBSwhjyrS48/giphy.gif" alt="I'm sorry" />
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmQ2NmFsbHFkaXN5ZXRlNjR3YnY0c2hubjJmdGRiazh6OHR1M2J2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26BRv0ThflsHCqDrG/giphy.gif" alt="Heart" />
+            </div>
+        </div>
+        
+        <footer>
+            Made with love, especially for you. by your MANU ❤️
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('forgiveBtn').addEventListener('click', function() {
+            const reasons = document.getElementById('reasons');
+            
+            if (reasons.style.display === 'block') {
+                reasons.style.display = 'none';
+                this.innerText = 'Will You Forgive Me?';
+            } else {
+                reasons.style.display = 'block';
+                this.innerText = 'I Love You So Much!';
+                
+                // Create falling hearts animation
+                for (let i = 0; i < 30; i++) {
+                    createHeart();
+                }
+            }
+        });
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-20px';
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
+            heart.style.zIndex = '1000';
+            document.body.appendChild(heart);
+            
+            const animation = heart.animate([
+                { transform: 'translateY(0vh) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 3000,
+                easing: 'cubic-bezier(0.37, 0, 0.63, 1)'
+            });
+            
+            animation.onfinish = () => {
+                heart.remove();
+            };
+        }
+    </script>
+</body>
+</html>
